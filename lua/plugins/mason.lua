@@ -4,6 +4,7 @@ return {
     opts = {
       ensure_installed = {
         "js-debug-adapter",
+        "prettier",
       },
     },
   },

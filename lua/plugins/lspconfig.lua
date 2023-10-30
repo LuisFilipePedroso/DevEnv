@@ -62,12 +62,12 @@ return {
               vim.lsp.buf.code_action({
                 apply = true,
                 context = {
-                  only = { "source.missingImports.ts" },
+                  only = { "source.addMissingImports.ts" },
                   diagnostics = {},
                 },
               })
             end,
-            desc = "Organize Imports",
+            desc = "Add Missing Imports",
           },
           {
             "<leader>cu",

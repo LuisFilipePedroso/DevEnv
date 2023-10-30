@@ -1,6 +1,6 @@
 {
   "reactFunctionComponent": {
     "prefix": "rfdc",
-    "body": "type $TM_FILENAME_BASE$Props = {}\n\nfunction $TM_FILENAME_BASE$(props: $TM_FILENAME_BASE$Props) {\n\treturn (\n\t\t<>\n\t\t$END$\n\t\t</>\n\t)\n}\n\nexport default $TM_FILENAME_BASE$"
+    "body": "type $TM_FILENAME_BASE$Props = {}\n\nfunction $TM_FILENAME_BASE(props: $TM_FILENAME_BASE$Props) {\n\treturn (\n\t\t<>\n\t\t$END$\n\t\t</>\n\t)\n}\n\nexport default $TM_FILENAME_BASE"
   }
 }
