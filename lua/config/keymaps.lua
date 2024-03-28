@@ -21,6 +21,8 @@ map("n", "<leader>rw", "caw", { desc = "Replace around word" })
 map("n", "<leader>rs", ":%s/", { desc = "Search and replace" })
 map("n", "<leader>rr", "<cmd>so %<cr>", { noremap = true, desc = "Reload vimrc", silent = true })
 
+map("n", "<A-BS>", "daw", { desc = "Delete around word" })
+
 -- typescript
 -- map("n", "<leader>cu", "<cmd>TypescriptRemoveUnused<cr>", { desc = "Remove unused imports" })
 -- map("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", { desc = "Add Missing Imports" })
@@ -36,6 +38,7 @@ map("n", "<leader>p", "o<Esc>0p", { desc = "Paste above" })
 map("n", "<leader>P", "O<Esc>0P", { desc = "Paste bellow" })
 
 map("n", "gg", "gg0", { desc = "Go to begginning" })
+map({ "n", "v" }, "gV", "<C-V>", { desc = "Blockwise Visual Mode" })
 
 -- diagnostics
 map("n", "<leader>cD", "<cmd>DiagWindowShow<cr>", { desc = "Open Diagnostics" })
@@ -53,3 +56,29 @@ map("n", "gly", "<CMD>Glance type_definitions<CR>", { desc = "Type definitions" 
 map("n", "glm", "<CMD>Glance implementations<CR>", { desc = "Implementations" })
 
 map("n", "<leader>h", "<cmd>lua require('tsht').nodes()<CR>", { desc = "Show places to hop" })
+
+map('n', '<leader>cs', require('treesj').split, { desc = "Split line" })
+map('n', '<leader>cS', function()
+  require('treesj').split({ recursive = true })
+end, { desc = "Toggle split recursive" })
+
+map('n', '<leader>cj', require('treesj').join, { desc = "Join lines" })
+map('n', '<leader>cJ', function()
+  require('treesj').join({ recursive = true })
+end, { desc = "Toggle join recursive" })
+
+
+map('n', '<leader>ct', require('treesj').toggle, { desc = "Toggle Split/Join lines" })
+map('n', '<leader>cT', function()
+  require('treesj').toggle({ split = { recursive = true } })
+end, { desc = "Toggle split/join recursive" })
+
+vim.keymap.set({ "i" }, "<C-K>", function() require("luasnip").expand() end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-L>", function() require("luasnip").jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-J>", function() require("luasnip").jump(-1) end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-E>", function()
+  if require("luasnip").choice_active() then
+    require("luasnip").change_choice(1)
+  end
+end, { silent = true })

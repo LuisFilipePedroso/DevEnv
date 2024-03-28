@@ -26,40 +26,14 @@ return {
     },
     keys = {
       {
-        "<leader>fh",
-        Util.telescope("files", { hidden = true }),
-        desc = "Find Files (root dir, including hidden)",
-      },
-      {
         "<C-p>",
-        Util.telescope("files", { cwd = false, hidden = true }),
+        Util.telescope("files", { hidden = false }),
         desc = "Find Files (cwd, including hidden)",
-      },
-      {
-        "<leader>fB",
-        ":Telescope file_browser path=%:p:h=%:p:h<cr>",
-        desc = "Browse Files",
-      },
-      {
-        "<leader>fl",
-        Util.telescope("resume"),
-        desc = "Resume last action",
-      },
-      {
-        --"<leader>ss",
-        "<C-v>",
-        Util.telescope("lsp_document_symbols"),
-        desc = "Goto Symbol",
-      },
-      {
-        "<leader>sS",
-        Util.telescope("lsp_dynamic_workspace_symbols"),
-        desc = "Goto Symbol (Workspace)",
       },
       {
         "<C-g>",
         ":Telescope live_grep<cr>",
-        desc = "Find Text Globally",
+        desc = "Find Files Globally",
       },
       {
         "<C-o>",
@@ -69,19 +43,19 @@ return {
     },
     opts = {
       defaults = {
-        theme = "dropdown",
+        -- theme = "dropdown",
         -- previewer = true,
-        -- file_ignore_patterns = { "node_modules", "package-lock.json" },
+        file_ignore_patterns = { "node_modules", "package-lock.json", "yarn.lock" },
         -- initial_mode = "insert",
         -- select_strategy = "reset",
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
-        layout_config = {
-          prompt_position = "top",
-          --   width = 0.75,
-          --   height = 0.75,
-          --   preview_cutoff = 120,
-        },
+        -- sorting_strategy = "ascending",
+        -- layout_strategy = "horizontal",
+        -- layout_config = {
+        -- prompt_position = "top",
+        --   width = 0.75,
+        --   height = 0.75,
+        --   preview_cutoff = 120,
+        -- },
         -- path_display = { "smart" },
         -- winblend = 0,
         -- border = {},
@@ -153,30 +127,30 @@ return {
           },
         },
       },
-      extensions = {
-        fzf = {
-          fuzzy = true, -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-        },
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown({
-            previewer = false,
-            initial_mode = "normal",
-            sorting_strategy = "ascending",
-            layout_strategy = "horizontal",
-            layout_config = layout_config,
-          }),
-        },
-      },
+      -- extensions = {
+      --   fzf = {
+      --     fuzzy = true,                   -- false will only do exact matching
+      --     override_generic_sorter = true, -- override the generic sorter
+      --     override_file_sorter = true,    -- override the file sorter
+      --     case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+      --   },
+      --   ["ui-select"] = {
+      --     require("telescope.themes").get_dropdown({
+      --       previewer = false,
+      --       initial_mode = "normal",
+      --       sorting_strategy = "ascending",
+      --       layout_strategy = "horizontal",
+      --       layout_config = layout_config,
+      --     }),
+      --   },
+      -- },
     },
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
-      telescope.load_extension("fzf")
-      telescope.load_extension("ui-select")
-      telescope.load_extension("file_browser")
+      -- telescope.load_extension("fzf")
+      -- telescope.load_extension("ui-select")
+      -- telescope.load_extension("file_browser")
     end,
   },
 }

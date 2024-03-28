@@ -52,6 +52,7 @@ return {
                   only = { "source.organizeImports.ts" },
                   diagnostics = {},
                 },
+                mode = { "n", "v" },
               })
             end,
             desc = "Organize Imports",
